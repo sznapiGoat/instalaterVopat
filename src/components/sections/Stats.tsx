@@ -18,9 +18,13 @@ const stats: Stat[] = [
 export function Stats() {
   return (
     <section className="border-t-2 border-accent bg-ink">
-      <div className="container-px grid grid-cols-2 gap-x-6 gap-y-10 py-14 lg:grid-cols-4 lg:py-16">
+      <div className="container-px grid grid-cols-2 py-14 lg:grid-cols-4 lg:py-16">
         {stats.map((stat, i) => (
-          <Reveal key={stat.label} delay={i * 0.08} className="text-center lg:text-left">
+          <Reveal
+            key={stat.label}
+            delay={i * 0.08}
+            className="px-2 py-3 text-center sm:px-6 lg:border-l lg:border-white/10 lg:py-0 lg:text-left lg:first:border-l-0"
+          >
             <div className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
               {stat.display ? (
                 stat.display

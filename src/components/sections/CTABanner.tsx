@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -5,7 +6,18 @@ import { site } from "@/lib/site";
 
 export function CTABanner() {
   return (
-    <section className="relative isolate overflow-hidden bg-accent py-16 lg:py-20">
+    <section className="relative isolate overflow-hidden bg-ink py-20 lg:py-24">
+      <Image
+        src="/images/vopat1.jpg"
+        alt="Panorama Plzně za soumraku"
+        fill
+        sizes="100vw"
+        className="-z-10 object-cover object-center"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/95 via-accent/85 to-accent/80"
+      />
       <div
         aria-hidden
         className="absolute inset-0 -z-10 opacity-10"
