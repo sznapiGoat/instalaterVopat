@@ -1,6 +1,6 @@
-import { Mail, Phone, User } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
-import { Placeholder } from "@/components/ui/Placeholder";
 import { site } from "@/lib/site";
 
 export function About() {
@@ -43,12 +43,15 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1} className="relative">
-          <Placeholder
-            file="portret.jpg"
-            label="Foto: Martin Vopat"
-            icon={User}
-            className="aspect-[4/5] w-full rounded-2xl"
-          />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+            <Image
+              src="/images/portret.jpg"
+              alt="Foto: Martin Vopat"
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover object-center"
+            />
+          </div>
           <div className="absolute -bottom-4 -left-4 hidden rounded-xl border border-line bg-white px-5 py-4 shadow-card sm:block">
             <p className="font-display text-2xl font-extrabold text-ink">
               Plzeň

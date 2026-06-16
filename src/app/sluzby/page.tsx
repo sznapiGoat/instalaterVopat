@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Check, Mail, Phone, ShieldCheck } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
-import { Placeholder } from "@/components/ui/Placeholder";
 import { Button } from "@/components/ui/Button";
 import { detailedServices } from "@/lib/services";
 import { site } from "@/lib/site";
@@ -80,12 +80,15 @@ export default function ServicesPage() {
                   delay={0.1}
                   className={cn(imageRight ? "lg:order-2" : "lg:order-1")}
                 >
-                  <Placeholder
-                    file={service.image}
-                    label={service.imageLabel}
-                    icon={service.icon}
-                    className="aspect-[4/3] w-full rounded-2xl"
-                  />
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={`/images/${service.image}`}
+                      alt={service.imageLabel}
+                      fill
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      className="object-cover object-center"
+                    />
+                  </div>
                 </Reveal>
               </div>
             </section>
