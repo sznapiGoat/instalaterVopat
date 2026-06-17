@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Droplets, Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { nav, site } from "@/lib/site";
@@ -40,8 +40,13 @@ export function Navbar() {
           className="group flex items-center gap-2.5"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent text-white">
-            <Droplets className="h-5 w-5" strokeWidth={2} aria-hidden />
+          <span className="flex h-10 w-10 items-center justify-center rounded-md bg-white shadow-sm ring-1 ring-line">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo1.svg"
+              alt="Logo Martin Vopat"
+              className="h-8 w-8"
+            />
           </span>
           <span className="leading-tight">
             <span className="block font-display text-base font-bold tracking-tight text-ink">

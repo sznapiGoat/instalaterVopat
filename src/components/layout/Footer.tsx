@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Droplets, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { nav, site } from "@/lib/site";
 
 export function Footer() {
@@ -8,8 +8,13 @@ export function Footer() {
       <div className="container-px grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr] lg:gap-12">
         <div>
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent text-white">
-              <Droplets className="h-5 w-5" strokeWidth={2} aria-hidden />
+            <span className="flex h-10 w-10 items-center justify-center rounded-md bg-white shadow-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logo1.svg"
+                alt="Logo Martin Vopat"
+                className="h-8 w-8"
+              />
             </span>
             <span className="font-display text-lg font-bold text-white">
               {site.name}
