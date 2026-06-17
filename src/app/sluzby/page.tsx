@@ -80,13 +80,13 @@ export default function ServicesPage() {
                   delay={0.1}
                   className={cn(imageRight ? "lg:order-2" : "lg:order-1")}
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                  <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
                     <Image
                       src={`/images/${service.image}`}
                       alt={service.imageLabel}
                       fill
                       sizes="(min-width: 1024px) 45vw, 100vw"
-                      className="object-cover object-center"
+                      className="object-cover object-center transition-transform duration-[800ms] ease-out group-hover:scale-105"
                     />
                   </div>
                 </Reveal>

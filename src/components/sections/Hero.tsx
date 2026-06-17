@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { Mail, MapPin, Phone, ReceiptText, ShieldCheck } from "lucide-react";
+import { ChevronDown, Mail, MapPin, Phone, ReceiptText, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
@@ -19,23 +19,38 @@ export function Hero() {
     show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
   };
   const item = {
-    hidden: reduce ? {} : { y: 22 },
+    hidden: reduce ? {} : { y: 22, opacity: 0 },
     show: {
       y: 0,
+      opacity: 1,
       transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
 
   return (
     <section className="relative isolate flex min-h-dvh items-center overflow-hidden bg-ink">
-      <Image
-        src="/images/vopat2.jpg"
-        alt="Martin Vopat při instalatérské práci na potrubí"
-        fill
-        priority
-        sizes="100vw"
-        className="-z-10 object-cover object-center"
-      />
+      <motion.div
+        className="absolute inset-0 -z-10"
+        initial={reduce ? false : { scale: 1.12, opacity: 0 }}
+        animate={
+          reduce
+            ? undefined
+            : { scale: [1.12, 1, 1.06], opacity: 1 }
+        }
+        transition={{
+          opacity: { duration: 1.2, ease: "easeOut" },
+          scale: { duration: 22, ease: "easeInOut", times: [0, 0.07, 1] },
+        }}
+      >
+        <Image
+          src="/images/vopat2.jpg"
+          alt="Martin Vopat při instalatérské práci na potrubí"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </motion.div>
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
@@ -97,8 +112,20 @@ export function Hero() {
               href={site.phoneHref}
               className="group inline-flex w-fit items-center gap-3 text-white"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 transition-colors group-hover:bg-accent">
-                <Phone className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+              <span className="relative flex h-11 w-11 items-center justify-center rounded-full bg-accent ring-1 ring-white/20 transition-colors">
+                {!reduce ? (
+                  <motion.span
+                    aria-hidden
+                    className="absolute inset-0 rounded-full bg-accent"
+                    animate={{ scale: [1, 1.7], opacity: [0.55, 0] }}
+                    transition={{
+                      duration: 1.8,
+                      repeat: Infinity,
+                      ease: "easeOut",
+                    }}
+                  />
+                ) : null}
+                <Phone className="relative h-5 w-5" strokeWidth={2.2} aria-hidden />
               </span>
               <span className="font-display text-2xl font-bold tracking-tight tnum sm:text-3xl">
                 {site.phone}
@@ -152,6 +179,21 @@ export function Hero() {
         </motion.aside>
         </div>
       </div>
+
+      {/* scroll cue — gently bounces to invite scrolling */}
+      <motion.a
+        href="#sluzby"
+        aria-label="Posunout na služby"
+        className="absolute inset-x-0 bottom-6 mx-auto hidden h-10 w-10 items-center justify-center rounded-full text-white/70 ring-1 ring-white/20 transition-colors hover:text-white sm:flex"
+        initial={reduce ? false : { opacity: 0 }}
+        animate={reduce ? undefined : { opacity: 1, y: [0, 8, 0] }}
+        transition={{
+          opacity: { duration: 0.8, delay: 1 },
+          y: { duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 1 },
+        }}
+      >
+        <ChevronDown className="h-5 w-5" aria-hidden />
+      </motion.a>
     </section>
   );
 }

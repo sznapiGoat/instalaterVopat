@@ -43,13 +43,13 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1} className="relative">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
             <Image
               src="/images/portret.jpg"
               alt="Foto: Martin Vopat"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover object-center"
+              className="object-cover object-center transition-transform duration-[800ms] ease-out group-hover:scale-105"
             />
           </div>
           <div className="absolute -bottom-4 -left-4 hidden rounded-xl border border-line bg-white px-5 py-4 shadow-card sm:block">

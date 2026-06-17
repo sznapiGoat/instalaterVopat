@@ -15,15 +15,15 @@ export function ServiceCard({ icon, title, desc, index = 0 }: ServiceCardProps) 
 
   return (
     <motion.article
-      initial={reduce ? false : { y: 20 }}
-      whileInView={{ y: 0 }}
+      initial={reduce ? false : { y: 24, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{
         duration: 0.5,
-        delay: (index % 3) * 0.08,
+        delay: (index % 3) * 0.09,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={reduce ? undefined : { y: -4 }}
+      whileHover={reduce ? undefined : { y: -6 }}
       className="group relative flex flex-col rounded-xl border border-line bg-white p-7 shadow-card transition-colors duration-300 hover:border-accent hover:shadow-card-hover"
     >
       <div className="flex items-center gap-3.5">
